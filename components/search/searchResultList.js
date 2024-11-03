@@ -1,25 +1,39 @@
-import InfiniteScroll from "react-infinite-scroll-component";
 import SearchResultCard from "./searchResultCard";
-import Loader from "@/genericComponent/loader/loader";
-import { memo } from "react";
+import { memo, useCallback, useRef } from "react";
 
 function SearchResultsList({ searchResults, loadMoreData, hasMoreData }) {
+
+  const observerRef = useRef(null);
+
+  const lastItemRef = useCallback(node => {
+    if (observerRef.current) observerRef.current.disconnect();
+
+    observerRef.current = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && hasMoreData) {
+        loadMoreData()
+      }
+    }, {
+      rootMargin: '60px', 
+      threshold: 0.1
+    });
+
+    if (node) observerRef.current.observe(node);
+  }, [hasMoreData]);
+
+
   return (
-    <InfiniteScroll
-      dataLength={searchResults.length}
-      next={loadMoreData}
-      hasMore={hasMoreData}
-      loader={<div className="flex justify-center mt-4"><Loader /></div>}
-      endMessage={<div className="flex justify-center mt-4">No more search results</div>}
-      style={{ minHeight: '500px', height: 'auto', maxHeight: '65vh' }}
-    >
+   
       <div className="flex flex-wrap justify-center mt-4">
-        {searchResults.map((result) => (
-          <SearchResultCard key={result.key} result={result} />
+        {searchResults.map((result, index) => (
+          <div  ref={index === searchResults.length - 1 ? lastItemRef : null}>
+            <SearchResultCard key={result.key} result={result} />
+          </div>
         ))}
       </div>
-    </InfiniteScroll>
+ 
   );
 }
 
 export default memo(SearchResultsList);
+
+
