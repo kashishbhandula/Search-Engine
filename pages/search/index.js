@@ -1,6 +1,10 @@
+import Search from "@/components/search/search";
+
+
 function Index() {
-  return <div className="text-red-500">Search</div>;
+  return (
+  <Search/>
+  );
 }
   
-  export default Index;
-  
+export default Index;
