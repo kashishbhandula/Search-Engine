@@ -35,7 +35,7 @@ function Search() {
   }, [router.query.q]);
 
   return (
-    <>
+    <div className="overflow-hidden">
       <div className="relative z-[2] h-[25vh]">
         <div className="p-4 w-full fixed flex flex-col justify-center bg-white shadow-md">
           <div className="flex w-full">
@@ -56,14 +56,14 @@ function Search() {
         </div>
       </div>
 
-      <div className="p-4 relative h-[75vh]">
+      <div className="p-4 relative bg-gray-100">
         <SearchResultsList
           searchResults={searchResults}
           loadMoreData={loadMoreData}
           hasMoreData={hasMoreData}
         />
       </div>
-    </>
+    </div>
   );
 }
 

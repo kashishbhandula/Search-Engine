@@ -11,6 +11,7 @@ function SearchResultsList({ searchResults, loadMoreData, hasMoreData }) {
       hasMore={hasMoreData}
       loader={<div className="flex justify-center mt-4"><Loader /></div>}
       endMessage={<div className="flex justify-center mt-4">No more search results</div>}
+      style={{ minHeight: '500px', height: 'auto', maxHeight: '65vh' }}
     >
       <div className="flex flex-wrap justify-center mt-4">
         {searchResults.map((result) => (
