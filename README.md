@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Project Setup
 
-## Getting Started
+## Prerequisites
+1. **Node.js**: Ensure you have Node.js installed. [Download here](https://nodejs.org/).
+2. **NPM**: Comes bundled with Node.js, but make sure it is updated.
 
-First, run the development server:
+## Installation
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. **Install Dependencies**: Run the following command to install all required packages.
+    ```bash
+    npm install
+    ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Start Development Server**: To run the project in development mode, execute:
+    ```bash
+    npm run dev
+    ```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create a `.env` file in the root of your project directory with the following content:
 
-## Learn More
+    ```javascript
+    module.exports = {
+        GOOGLE_API_KEY: "",
+        GOOGLE_API_CX: "",
+        GEMINI_API_KEY: "",
+    };
+    ```
 
-To learn more about Next.js, take a look at the following resources:
+### API Keys
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **GOOGLE_API_KEY && GOOGLE_API_CX from here**: Refer to the [Custom Search JSON API documentation](https://developers.google.com/custom-search/v1/overview) for more details on the search API.
+- **GEMINI_API_KEY**: Refer to the [Gemini API documentation](https://ai.google.dev/gemini-api?gad_source=1&gclid=Cj0KCQjwvpy5BhDTARIsAHSilyllaj7_civCW5-NBN2Yn-jy9vgiaROUtDT2yVkOLJkn_A6Xs9P0LuoaAtvTEALw_wcB) to understand the usage of the Gemini API.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Run Project
+After setting up the environment variables and installing dependencies, start the development server as specified above. 
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
