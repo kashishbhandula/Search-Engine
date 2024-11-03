@@ -1,7 +1,5 @@
 import SearchBar from "@/genericComponent/searchBar/searchBar";
-import useGetSearchResults from "@/services/useGetSearchResults";
-import { useRouter } from "next/router";
-import { useEffect, useState, useCallback } from "react";
+import { memo } from "react";
 
 function SearchBarWrapper({
   value,
@@ -28,4 +26,4 @@ function SearchBarWrapper({
   );
 }
 
-export default SearchBarWrapper;
+export default memo(SearchBarWrapper);

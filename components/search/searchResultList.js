@@ -1,5 +1,7 @@
 import InfiniteScroll from "react-infinite-scroll-component";
 import SearchResultCard from "./searchResultCard";
+import Loader from "@/genericComponent/loader/loader";
+import { memo } from "react";
 
 function SearchResultsList({ searchResults, loadMoreData, hasMoreData }) {
   return (
@@ -7,8 +9,8 @@ function SearchResultsList({ searchResults, loadMoreData, hasMoreData }) {
       dataLength={searchResults.length}
       next={loadMoreData}
       hasMore={hasMoreData}
-      loader={<div>Loading...</div>}
-      endMessage={<div>No more search results</div>}
+      loader={<div className="flex justify-center mt-4"><Loader /></div>}
+      endMessage={<div className="flex justify-center mt-4">No more search results</div>}
     >
       <div className="flex flex-wrap justify-center mt-4">
         {searchResults.map((result) => (
@@ -19,4 +21,4 @@ function SearchResultsList({ searchResults, loadMoreData, hasMoreData }) {
   );
 }
 
-export default SearchResultsList;
+export default memo(SearchResultsList);

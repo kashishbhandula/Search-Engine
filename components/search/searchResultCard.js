@@ -1,6 +1,8 @@
+import { memo } from "react";
+
 function SearchResultCard({ result }) {
-    return (
-      <div className="p-4 max-w-sm bg-white shadow-md rounded-lg m-2">
+  return (
+    <div className="p-4 max-w-sm bg-white shadow-md rounded-lg m-2">
         <img
           src={result.thumbnail || ""}
           alt="Search result thumbnail"
@@ -29,5 +31,5 @@ function SearchResultCard({ result }) {
     );
   }
   
-  export default SearchResultCard;
+  export default memo(SearchResultCard);
   

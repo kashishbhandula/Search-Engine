@@ -1,11 +1,11 @@
 import ReactMarkdown from "react-markdown";
-import { useState } from "react";
+import { useState, memo } from "react";
 
 function Summary({ openAiResult }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="mt-4 p-4 bg-gray-100 rounded-lg shadow-md">
+    <div className="p-4 bg-gray-100 rounded-lg shadow-md">
       <h2 className="text-lg font-semibold mb-2">Summary</h2>
       <div
         className={`transition-all overflow-hidden ${isExpanded ? "max-h-full" : "max-h-[50px]"}`}
@@ -22,4 +22,4 @@ function Summary({ openAiResult }) {
   );
 }
 
-export default Summary;
+export default memo(Summary);

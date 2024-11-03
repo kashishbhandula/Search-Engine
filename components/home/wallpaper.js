@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 function Wallpaper({ children }) {
   return (
     <div
@@ -9,4 +11,4 @@ function Wallpaper({ children }) {
   );
 }
 
-export default Wallpaper;
+export default memo(Wallpaper);

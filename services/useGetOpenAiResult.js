@@ -40,7 +40,6 @@ const useGetOpenAiResult = (searchText) => {
       setError(null);
       try {
         const results = await fetchSearchResults(searchText);
-        console.log(results);
         setSearchResults(results);
       } catch (err) {
         setError(err.message);

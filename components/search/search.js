@@ -1,15 +1,16 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, memo } from "react";
 import { useRouter } from "next/router";
 import useGetOpenAiResult from "../../services/useGetOpenAiResult";
 import Summary from "./summary";
 import SearchResultsList from "./searchResultList";
 import SearchBarWrapper from "./searchBarWrapper";
 import useGetSearchResults from "@/services/useGetSearchResults";
+import Shimmer from "@/genericComponent/shimmer/shimmer";
 
 function Search() {
   const [searchText, setSearchText] = useState("");
   const router = useRouter();
-  const { searchResults: openAiResult } = useGetOpenAiResult(searchText);
+  const { searchResults: openAiResult , loading: isOpenAiLoading } = useGetOpenAiResult(searchText);
   const [pageNo, setPageNo] = useState(0);
   const { searchResults, nextPage: hasMoreData } = useGetSearchResults(searchText, pageNo);
 
@@ -47,11 +48,15 @@ function Search() {
               hasMoreData={hasMoreData}
             />
           </div>
-          {openAiResult && <Summary openAiResult={openAiResult} />}
+          <div className="mt-4">
+            <Shimmer showShimmer={isOpenAiLoading}>
+              <Summary openAiResult={openAiResult} />
+            </Shimmer>
+          </div>
         </div>
       </div>
 
-      <div className="p-4 relative bg-gray-100">
+      <div className="p-4 relative h-[75vh]">
         <SearchResultsList
           searchResults={searchResults}
           loadMoreData={loadMoreData}
@@ -62,4 +67,4 @@ function Search() {
   );
 }
 
-export default Search;
+export default memo(Search);
